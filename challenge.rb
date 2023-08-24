@@ -8,13 +8,11 @@ def first_method(string)
     '--..' => 'Z'
   }
   string = string.strip
-  morse_char = morse_code[string] || ''
-  morse_char
+  morse_code[string]
 end
 
 def second_method(string)
-  morse_chars = string.split(' ').map { |morse_word| first_method(morse_word) || ' ' }.join
-  morse_chars
+  string.split.map { |morse_word| first_method(morse_word) }.join
 end
 
 def morse(string)
@@ -23,15 +21,9 @@ def morse(string)
     decoded_word = second_method(morse_char)
     decoded_word
   end
-
-  decoded_phrase = decoded_words.join(' ')
-  decoded_phrase
+  decoded_words.join(' ')
 end
 
-input = ".-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ..."
-first_input = '.-'
-result = first_method(first_input)
-second_input = '.- -... -..-'
-result = second_method(second_input)
+input = '.-   -... --- -..-   ..-. ..- .-.. .-..   --- ..-.   .-. ..- -... .. . ...'
 result = morse(input)
 puts result
